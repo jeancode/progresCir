@@ -1,5 +1,5 @@
 
-function Jprogres(id,name,radio){
+function Jprogres(id,name,radio,funcion){
 	
 	var  contenedor = $(id);
 	var  name = name;
@@ -7,7 +7,9 @@ function Jprogres(id,name,radio){
 	
 	var strokercicle = Math.PI*(radio*2);
 	 
+	$("#"+name).click(funcion);
 	
+	 
 	$("#"+name).css({
 		"display": "block",
 		"height": "200px",
@@ -17,7 +19,11 @@ function Jprogres(id,name,radio){
 		"position": "relative",
 		"display":"flex",
 		"justify-content":"center",
-		"align-items":"center"
+		"align-items":"center",
+		"font-size":"24px",
+		"font-family":"verdana",
+		"-webkit-user-select":"none",
+		"cursor":"default"
 	});
 	
 		
@@ -44,7 +50,7 @@ function Jprogres(id,name,radio){
 	$("#"+name+"_svg "+ "circle").css({
 		"stroke-dashoffset": "0",
 		"transition": "stroke-dashoffset .5s ease",
-		"stroke": "red",
+		"stroke": "#eee",
 		"stroke-width": ".7em"
 	});
 	
@@ -52,7 +58,7 @@ function Jprogres(id,name,radio){
 	$("#"+name+"_svg "+ " #"+name+"_bar").css({
 		"stroke-dashoffset": "0",
 		"transition": "stroke-dashoffset .5s ease",
-		"stroke": "blue",
+		"stroke": "#727272",
 		"stroke-width": ".7em"
 	});
 	
@@ -88,19 +94,19 @@ function Jprogres(id,name,radio){
   
 	}
 	
-	
+
 	
 	
 }
 
 
 $(document).ready(function(){
-	
-	$("#val").change(function(){
-		progressbar1.val($(this).val());
-	});
-	
 	var progressbar1 = new Jprogres("body",'progress1',90);
+	
+	progressbar1.val(50);
+	
+	var progressbar2 = new Jprogres("body",'progress2',50);
+	
 
 });
 
