@@ -33,7 +33,7 @@ function Jprogres(id,name,radio,funcion){
 	<div id="${name}_percent">0</div>
 	<svg id="${name}_svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
 	
-		<circle r="${radio}" cx="100" cy="100" fill="transparent" stroke-dasharray="${strokercicle}" stroke-dashoffset="0"></circle>
+		<circle id="${name}_back" r="${radio}" cx="100" cy="100" fill="transparent" stroke-dasharray="${strokercicle}" stroke-dashoffset="0"></circle>
 		<circle id="${name}_bar" r="${radio}" cx="100" cy="100" fill="transparent" stroke-dasharray="${strokercicle}" stroke-dashoffset="0"></circle>
 	
 	</svg>
@@ -45,12 +45,28 @@ function Jprogres(id,name,radio,funcion){
 		"position":"absolute"
 	});
 	
+	var colorback = "#eee";
 	
+	this.color = function(color){
+	
+
+		$("#"+name+"_svg "+ " #"+name+"_bar").css({
+			"stroke": color
+		});
+	};
+	
+	this.backcolor = function(color){
+		
+		$("#"+name+"_back").css({
+			"stroke": color
+		});		
+		
+	}
 	
 	$("#"+name+"_svg "+ "circle").css({
 		"stroke-dashoffset": "0",
 		"transition": "stroke-dashoffset .5s ease",
-		"stroke": "#eee",
+		"stroke": colorback,
 		"stroke-width": ".7em"
 	});
 	
@@ -102,11 +118,10 @@ function Jprogres(id,name,radio,funcion){
 
 $(document).ready(function(){
 	var progressbar1 = new Jprogres("body",'progress1',90);
-	
 	progressbar1.val(50);
 	
-	var progressbar2 = new Jprogres("body",'progress2',50);
-	
+	progressbar1.color("#5d5d5d");
+	progressbar1.backcolor("#ddd")
 
 });
 
